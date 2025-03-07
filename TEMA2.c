@@ -1,7 +1,7 @@
 /*Aplicația 2.1: Se cere un număr n și apoi un vector de n rezultate ale studenților la un examen. Fiecare rezultat
 este definit prin (nume,nota). Se cere să se sorteze folosind qsort vectorul în ordinea notelor, notele cele mai mari
 fiind primele. Dacă două note sunt identice, rezultatele respective se vor sorta în ordinea alfabetică a numelor.*/
-#include <stdio.h>
+/*#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -29,7 +29,7 @@ int sortareNote(const void *a, const void *b)
         {
             return 1;
         }
-        else 
+        else
             return 0;
     }
 }
@@ -56,4 +56,59 @@ int main()
     {
         printf("%f %s\n", v[i].nota, v[i].nume);
     }
+}*/
+
+/*Aplicația 2.2: Să se implementeze o funcție care primește ca parametri un vector de întregi, numărul elementelor
+din vector transmis prin adresă și un predicat care testează dacă un întreg îndeplinește o anumită condiție. Funcția
+va sterge din vector toate elementele care nu îndeplinesc condiția dată și va actualiza numărul elementelor cu
+numărul de elemente rămas în vector. Să se testeze funcția cu un predicat care testează dacă un număr este
+negativ și să se afișeze vectorul rezultat.*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+void elimElem(int *v, int size, int pozitie)
+{
+    for (int i = pozitie; i < size; i++)
+    {
+        v[i] = v[i + 1];
+    }
+}
+void Functie(int *v, int *size, int (*conditie)(int))
+{
+    for (int i = 0; i < *size; i++)
+    {
+        if (conditie(v[i]) == 0)
+        {
+            elimElem(v, *size, i);
+            (*size)--;
+            i--;
+        }
+    }
+}
+int negativ(int x)
+{
+    if (x < 0)
+        return 1;
+    else
+        return 0;
+}
+void afisare(int *v,int size)
+{
+    for(int i=0;i<size;i++)
+    printf("%d ", v[i]);
+}
+int main()
+{
+    int len, *v;
+    scanf("%d", &len);
+    if((v=malloc(len*sizeof(int)))==NULL){
+        perror("Nu s a putut aloca memoria");
+    }
+    for(int i=0; i<len; i++){
+        scanf("%d", &v[i]);
+    }
+    Functie(v, &len, negativ);
+    afisare(v, len);
 }
