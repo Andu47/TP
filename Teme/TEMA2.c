@@ -181,32 +181,37 @@ din math.h*/
 #include <math.h>
 #include <stdint.h>
 
-double cosinus(double x){
+double cosinus(double x)
+{
     return cos(x);
 }
-double radical(double x){
+double radical(double x)
+{
     return sqrt(x);
 }
-double modul(double x){
+double modul(double x)
+{
     return fabs(x);
 }
-void tabelare(double a, double b, int n, double (*f)(double)){
-    double step=(b-a)/n;
-    for(double i=a; i<=b; i+=step){
-        double g=f(i);
+void tabelare(double a, double b, int n, double (*f)(double))
+{
+    double step = (b - a) / n;
+    for (double i = a; i <= b; i += step)
+    {
+        double g = f(i);
         printf("f(%.2lf)=%.2lf ", i, g);
     }
     printf("\n");
 }
-int main(void){
-    double a=0.0,b=0.0;
-    int n=0;
+int main(void)
+{
+    double a = 0.0, b = 0.0;
+    int n = 0;
     scanf("%lf %lf %d", &a, &b, &n);
-    
-    tabelare(a,b,n,&cosinus);
-    tabelare(a,b,n,radical);
-    tabelare(a,b,n,modul);
 
+    tabelare(a, b, n, cosinus);
+    tabelare(a, b, n, radical);
+    tabelare(a, b, n, modul);
 }
 
 

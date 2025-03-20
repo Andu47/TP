@@ -6,7 +6,7 @@ literele matricii pe verticală în sus sau în jos sau pe orizontală spre stâ
 
 // vom citi din fisier pentru a fi mai simplu de verificat
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
@@ -152,4 +152,41 @@ int main(int argc, char **argv)
     Find(&v, n, lenWord, word, revWord);
 
     return 0;
+}*/
+
+
+/*Subiect 8.1: Se citesc de la tastatură două numere n și m, n>=m. Pe urmă se citesc două matrici pătratice de
+dimensiuni n, respectiv m, conținând numere întregi. Afișați toate pozitiile unde a doua matrice apare în prima
+matrice. Afișarea se va face pe ecran sub forma unor perechi de forma (linie, coloană). Dacă a doua matrice nu
+apare în prima matrice, se va afișa textul “Nu apare”.
+Spre exemplu dacă se introduce:
+5 3
+1 0 1 1 1
+0 1 0 1 1
+1 0 1 1 1
+0 1 0 1 1
+1 0 1 1 1
+0 1 1
+1 0 1
+0 1 1
+se va afișa pe ecran:
+(0,1) (2,1)*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    int n, m;
+    scanf("%d %d", &n, &m);
+    int a[n][n], b[m][m];
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            scanf("%d ", &a[i][j]);
+        }
+    }
+    for(int i=0; i<m; i++){
+        for(int j=0; j<m; j++){
+            scanf("%d ", &b[i][j]);
+        }
+    }
 }
