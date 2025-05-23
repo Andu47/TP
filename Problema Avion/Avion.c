@@ -64,10 +64,10 @@ void afisarePasageri(Avion_t *a, float g) // O(n*(log(n)+1))
     // vom pune toti pasagerii in acelasi vector aux
     Pasager_t aux[400]; // folosind aux nu schimbam ordinea pasagerilor in avion
 
-    memcpy(aux, a->v1, a->total1 * sizeof(Pasager_t));
-    memcpy(aux + a->total1, a->v2, a->total2 * sizeof(Pasager_t));
+    memcpy(aux, a->v1, (a->total1 - a->disp1) * sizeof(Pasager_t));
+    memcpy(aux + a->total1 - a->disp1, a->v2, (a->total2 - a->disp2) * sizeof(Pasager_t));
 
-    int total = a->total1 + a->total2;
+    int total = a->total1 + a->total2 - a->disp1 - a->disp2;
 
     // sortam elementele
     qsort(aux, total, sizeof(Pasager_t), comparare); // O(n*logn)
@@ -86,6 +86,8 @@ void afisarePasageri(Avion_t *a, float g) // O(n*(log(n)+1))
             }
         }
     } // O(n)
+
+    printf("\n");
 }
 
 int mutarePasageri(Avion_t *a, int x, unsigned int nr_cat)
@@ -101,7 +103,7 @@ int mutarePasageri(Avion_t *a, int x, unsigned int nr_cat)
             for (int i = 0; i < nrPasMutati; i++)
             {
                 a->v2[current2 + i] = a->v1[current1 - nrPasMutati + i];
-                a->v2[current2 + i].categorie = 0;
+                a->v2[current2 + i].categorie = 1;
                 a->disp1++;
                 a->disp2--;
             }
@@ -119,7 +121,7 @@ int mutarePasageri(Avion_t *a, int x, unsigned int nr_cat)
             for (int i = 0; i < nrPasMutati; i++)
             {
                 a->v1[current1 + i] = a->v2[current2 - nrPasMutati + i];
-                a->v1[current1 + i].categorie = 1;
+                a->v1[current1 + i].categorie = 0;
                 a->disp1--;
                 a->disp2++;
             }

@@ -16,6 +16,6 @@ int main(void)
     if (adaugare(&a, p, 20.45, 1) == NULL)
         return -1;
     afisarePasageri(&a, 10);
-    mutarePasageri(&a, 1, 0);
+    mutarePasageri(&a, 1, 1);
     afisarePasageri(&a, 10);
 }
