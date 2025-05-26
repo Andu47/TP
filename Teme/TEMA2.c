@@ -213,5 +213,3 @@ int main(void)
     tabelare(a, b, n, radical);
     tabelare(a, b, n, modul);
 }
-
-

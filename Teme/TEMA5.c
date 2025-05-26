@@ -50,9 +50,8 @@ int main(int argc, char *argv[]) {
     return 0;
 }*/
 
-
 /*Aplicația 5.6: Să se scrie un program care primește 2 fișiere în linia de comandă și le compară între ele. Pentru fiecare octet diferit găsit, se afișează offsetul acestuia și valorile sale din fiecare fișier, în hexazecimal, pe câte 2 cifre. Dacă fișierele sunt de dimensiuni diferite, în final se vor afișa toți octeții din fișierul mai mare. Dacă fișierele sunt identice, programul nu va afișa nimic.
-*/
+ */
 /*
 int main(int argc, char *argv[]) {
     if (argc != 3) {

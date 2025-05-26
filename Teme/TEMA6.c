@@ -113,9 +113,10 @@ Exemple:
 ./criptare dec 1 bcfdfebs -> abecedar
 ./criptare enc 10 vine VINE primavara PRImaVAra -> fsxo fsxo zbswkfkbk zbswkfkbk*/
 
-
-char cript_litera(char c, int cheie, int enc) {
-    if (!isalpha(c)) return c;
+char cript_litera(char c, int cheie, int enc)
+{
+    if (!isalpha(c))
+        return c;
 
     c = tolower(c);
     int offset = c - 'a';
@@ -128,30 +129,38 @@ char cript_litera(char c, int cheie, int enc) {
     return 'a' + offset;
 }
 
-void proceseaza(char *cuvant, int cheie, int enc) {
-    for (int i = 0; cuvant[i]; i++) {
+void proceseaza(char *cuvant, int cheie, int enc)
+{
+    for (int i = 0; cuvant[i]; i++)
+    {
         printf("%c", cript_litera(cuvant[i], cheie, enc));
     }
     printf(" ");
 }
 
-int main(int argc, char *argv[]) {
-    if (argc < 4) {
+int main(int argc, char *argv[])
+{
+    if (argc < 4)
+    {
         printf("Utilizare: %s enc|dec cheie cuvant1 [cuvant2 ...]\n", argv[0]);
         return 1;
     }
 
     int enc;
-    if (strcmp(argv[1], "enc") == 0) enc = 1;
-    else if (strcmp(argv[1], "dec") == 0) enc = 0;
-    else {
+    if (strcmp(argv[1], "enc") == 0)
+        enc = 1;
+    else if (strcmp(argv[1], "dec") == 0)
+        enc = 0;
+    else
+    {
         printf("Operatie necunoscuta: %s\n", argv[1]);
         return 1;
     }
 
     int cheie = atoi(argv[2]) % 26;
 
-    for (int i = 3; i < argc; i++) {
+    for (int i = 3; i < argc; i++)
+    {
         proceseaza(argv[i], cheie, enc);
     }
 
